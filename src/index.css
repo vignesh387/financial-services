@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@layer base {
+   label {
+    color: #343434;
+    font-weight: 500;
+   }
+
+   input::placeholder {
+     color: #a4a4a4;
+   }
+
+   input {
+     border: none;
+     outline: none;
+   }
+
+   body {
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+  }
+}
+
+
+@theme {
+  --animate-fadeIn: fade-in 0.6s ease-in;
+  --animate-zoomOut: zoom-out 0.2s ease-in;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    },
+    100% {
+      opacity: 1;
+    }
+    
+  }
+
+@keyframes zoom-out {
+   from {
+     scale: 0;
+
+   }
+   to {
+    scale: 1;
+  
+   }
+}
+}
+
+
+@layer utilities {
+  .input-container {
+    @apply flex gap-2.5 items-center bg-white border-[1.5px] border-[#e4e4e4] p-3.5 focus-within:outline-none focus-within:shadow-[0_0_8px_rgba(59,130,246,0.6)] focus-within:border-[#3F4E85] focus-within:shadow-[#3F4E8590] transition-shadow
+  }
+  .form-container {
+    @apply grid gap-5 mt-8 mb-5 md:grid-cols-2;
+  }
+  .line {
+     @apply w-full h-[1.5px] bg-[#bbc0cb] relative after:content-[""] after:absolute after:left-0 after:w-0 after:h-[1.5px] after:bg-[#273d8c] after:transition-[width] after:duration-500 after:ease-in
+  }
+  .active.line {
+    @apply after:w-full;
+  }
+  .dot {
+    @apply w-6 h-6 bg-[#bbc0cb] rounded-[100%] shrink-0 relative after:content-[""] after:absolute after:inset-0 after:bg-inherit after:w-full after:h-full after:rounded-[100%]
+  }
+  .active.dot {
+    @apply after:bg-[#273d8c] after:animate-zoomOut
+  }
+  .form-container {
+    @apply grid  min-[1024px]:grid-rows-2 gap-5 mt-8 mb-5
+  }
+}
